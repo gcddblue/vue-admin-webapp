@@ -1,0 +1,77 @@
+@import './variable.scss';
+
+html {
+  height: 100%;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+body {
+  height: 100%;
+  font: 12px/1.5 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, SimSun, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100%;
+}
+.loginCon .el-input__inner {
+  background: rgba(0, 0, 0, 0.1);
+  height: 50px;
+  outline: none;
+  color: #fff;
+  border: none;
+}
+.loginCon .el-form-item {
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 5px;
+}
