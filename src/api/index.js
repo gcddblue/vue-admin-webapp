@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Qs from 'qs'
+import store from '@/store'
 
 const $axios = axios.create({
   timeout: 30000,
@@ -9,7 +10,7 @@ const $axios = axios.create({
 // 请求拦截器
 $axios.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('token')
+    const token = store.state.token
     if (token) {
       config.headers.Authorization = token // 请求头部添加token
     }
