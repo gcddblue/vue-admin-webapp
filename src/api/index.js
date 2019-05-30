@@ -1,15 +1,19 @@
 import axios from 'axios'
 import Qs from 'qs'
 import store from '@/store'
+import router from 'vue-router'
+import { Loading, Message } from 'element-ui'
 
 const $axios = axios.create({
   timeout: 30000,
   baseURL: process.env.VUE_APP_BASE_API
 })
+let loading = null
 
 // 请求拦截器
 $axios.interceptors.request.use(
   config => {
+    loading = Loading.service({ text: '拼命加载中' })
     const token = store.state.token
     if (token) {
       config.headers.Authorization = token // 请求头部添加token
@@ -23,6 +27,9 @@ $axios.interceptors.request.use(
 // 响应拦截器
 $axios.interceptors.response.use(
   response => {
+    if (loading) {
+      Loading.close()
+    }
     const code = response.status
     if ((code >= 200 && code < 300) || code === 304) {
       return Promise.resolve(response.data)
@@ -31,13 +38,34 @@ $axios.interceptors.response.use(
     }
   },
   error => {
+    if (loading) {
+      Loading.close()
+    }
     if (error.response) {
       switch (error.response.status) {
         case 401:
-        // 返回401 清除token信息并跳转到登陆页面
+          // 返回401 清除token信息并跳转到登陆页面
+          store.commit('DEL_TOKEN')
+          router.replace({
+            path: '/login',
+            query: {
+              redirect: router.currentRoute.fullPath
+            }
+          })
+          break
+        case 404:
+          Message.error('网络请求不存在')
+          break
+        default:
+          Message.error(error.response.data.message)
       }
     } else {
       // 请求超时或者网络有问题
+      if (error.message.includes('timeout')) {
+        Message.error('请求超时！请检查网络是否正常')
+      } else {
+        Message.error('请求失败，请检查网络是否已连接')
+      }
     }
     return Promise.reject(error)
   }
