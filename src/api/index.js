@@ -5,8 +5,8 @@ import router from 'vue-router'
 import { Loading, Message } from 'element-ui'
 
 const $axios = axios.create({
-  timeout: 30000,
-  baseURL: process.env.VUE_APP_BASE_API
+  timeout: 30000
+  // baseURL: process.env.VUE_APP_BASE_API
 })
 let loading = null
 
@@ -28,7 +28,7 @@ $axios.interceptors.request.use(
 $axios.interceptors.response.use(
   response => {
     if (loading) {
-      Loading.close()
+      loading.close()
     }
     const code = response.status
     if ((code >= 200 && code < 300) || code === 304) {
@@ -39,7 +39,7 @@ $axios.interceptors.response.use(
   },
   error => {
     if (loading) {
-      Loading.close()
+      loading.close()
     }
     if (error.response) {
       switch (error.response.status) {
@@ -79,7 +79,7 @@ export default {
       url,
       data: Qs.stringify(data),
       headers: {
-        'Conten-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
     })
   },
