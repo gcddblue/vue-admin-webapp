@@ -42,6 +42,7 @@
 
 <script>
 import { login } from '@/api/login'
+import SlideVerify from '@/components/slideVerify'
 import { mapMutations } from 'vuex'
 export default {
   data() {
@@ -62,7 +63,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['SET_TOKEN']),
+    ...mapMutations(['SET_TOKEN', 'SET_ROLES']),
     onSuccess() {
       this.showSlide = false
       this._login()
@@ -86,6 +87,7 @@ export default {
       login(this.ruleForm).then(res => {
         if (res.code === 0) {
           this.SET_TOKEN(res.data.token) // vuex保存token
+          this.SET_ROLES(res.data.roles)
           this.$message({
             type: 'success',
             message: res.data.msg
@@ -95,7 +97,7 @@ export default {
     }
   },
   components: {
-    // SlideVerify
+    SlideVerify
   }
 }
 </script>

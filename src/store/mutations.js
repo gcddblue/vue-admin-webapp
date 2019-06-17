@@ -8,6 +8,9 @@ const mutations = {
   [types.DEL_TOKEN](state) {
     state.token = ''
     localStorage.removeItem('token')
+  },
+  [types.SET_ROLES](state, payload) {
+    state.roles = payload
   }
 }
 
