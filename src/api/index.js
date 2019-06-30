@@ -14,7 +14,7 @@ let loading = null
 $axios.interceptors.request.use(
   config => {
     loading = Loading.service({ text: '拼命加载中' })
-    const token = store.state.token
+    const token = store.getters.token
     if (token) {
       config.headers.Authorization = token // 请求头部添加token
     }
@@ -41,6 +41,7 @@ $axios.interceptors.response.use(
     if (loading) {
       loading.close()
     }
+    console.log(error)
     if (error.response) {
       switch (error.response.status) {
         case 401:

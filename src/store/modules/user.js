@@ -33,8 +33,12 @@ const actions = {
       login(formdatas)
         .then(res => {
           if (res.code === 0) {
-            commit('SET_TOKEN', res.data.token)
-            Message.success(res.data.msg)
+            if (res.data.success) {
+              Message.success(res.data.msg)
+              commit('SET_TOKEN', res.data.token)
+            } else {
+              Message.error(res.data.msg)
+            }
             resolve(res)
           }
         })
@@ -55,7 +59,7 @@ const actions = {
           } else {
             Message.error(res.msg)
           }
-          resolve(res)
+          resolve(res.data)
         })
         .catch(error => {
           reject(error)

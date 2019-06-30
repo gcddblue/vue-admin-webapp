@@ -1,5 +1,5 @@
 <template>
-  <div class="pageAdimin">admin2</div>
+  <div class="pageAdimin">admin</div>
 </template>
 
 <script>

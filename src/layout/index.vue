@@ -2,7 +2,7 @@
   <div class="wrapper">
     <m-header></m-header>
     <div class="wrapper_con">
-      <slide-bar></slide-bar>
+      <side-bar></side-bar>
       <div class="rightPanel">
         <router-view></router-view>
       </div>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import SlideBar from './components/slideBar'
+import SideBar from './components/sideBar'
 import MHeader from './components/header'
 export default {
   name: 'layout',
   components: {
-    SlideBar,
+    SideBar,
     MHeader
   }
 }

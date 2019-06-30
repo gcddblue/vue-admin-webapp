@@ -163,7 +163,10 @@ export default {
     // 随机生成img src
     getRandomImg() {
       // return 'https://picsum.photos/300/150/?image=' + this.getRandomNumberByRange(0, 1084);
-      return require(`@/assets/slide-${this.getRandomNumberByRange(0, 4)}.jpg`)
+      return require(`@/assets/slide_images/slide-${this.getRandomNumberByRange(
+        0,
+        4
+      )}.jpg`)
     },
     getRandomNumberByRange(start, end) {
       return Math.round(Math.random() * (end - start) + start)
