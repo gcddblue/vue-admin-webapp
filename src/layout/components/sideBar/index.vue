@@ -8,6 +8,7 @@
         text-color="#b5b6bd"
         active-text-color="rgb(79, 148, 212)"
         mode="vertical"
+        :collapse="opened"
       >
         <sidebar-item
           v-for="item in routes"
@@ -29,32 +30,13 @@ export default {
   },
   components: { SidebarItem },
   computed: {
-    ...mapGetters(['routes']),
+    ...mapGetters(['routes', 'opened']),
+    // booleanOpen() {
+    //   return this.opened === 'true' ? true : false
+    // },
     activeMenu() {
       return this.$route.path
     }
   }
 }
 </script>
-<style lang="scss">
-.slideBar {
-  width: 200px;
-  height: calc(100% - 50px);
-  background-color: #3a3f51;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  .el-scrollbar {
-    height: 100%;
-    .el-scrollbar__wrap {
-      overflow-x: hidden !important;
-    }
-  }
-  .el-menu {
-    height: 100%;
-    border: none;
-    width: 100%;
-  }
-}
-</style>

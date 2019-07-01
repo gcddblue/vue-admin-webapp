@@ -5,6 +5,7 @@ const getters = {
   introduce: state => state.user.introduce,
   routes: state => state.permission.routes,
   addRoutes: state => state.permission.addRoutes,
-  sideBarList: state => state.permission.sideBarList
+  sideBarList: state => state.permission.sideBarList,
+  opened: state => state.app.opened
 }
 export default getters

@@ -1,0 +1,129 @@
+#app {
+  .wrapper {
+    @extend %width-height;
+    position: relative;
+  }
+  .rightPanel {
+    margin-left: 200px;
+    padding-top: 50px;
+    background-color: #fff;
+    transition: all 0.3s;
+  }
+}
+// sideBar
+#app {
+  .slideBar {
+    width: $sideBarWidth;
+    height: calc(100% - 50px);
+    background-color: $dark-blue;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    transition: width 0.3s;
+    .el-scrollbar {
+      height: 100%;
+      .el-scrollbar__wrap {
+        overflow-x: hidden !important;
+      }
+    }
+    .el-menu {
+      @extend %width-height;
+      border: none;
+    }
+  }
+}
+// header
+.header {
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+}
+.header_l {
+  width: 200px;
+  height: 100%;
+  float: left;
+  background-color: #3a3f51;
+  box-sizing: border-box;
+  border-bottom: 1px solid #454b61;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+.header_r {
+  height: 100%;
+  margin-left: 200px;
+  background-color: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+.logoLink {
+  color: #fff;
+  font-size: 20px;
+  margin: 9px 0 0 23px;
+  display: inline-block;
+  font-weight: bold;
+  font-family: serif;
+  img {
+    height: 28px;
+    vertical-align: sub;
+    margin-right: 8px;
+  }
+}
+.headr_d1 {
+  float: left;
+  height: 100%;
+  margin-left: 20px;
+  .sidecoll {
+    float: left;
+    margin-top: 16px;
+  }
+}
+// collapse
+#app {
+  .closeBar {
+    .slideBar {
+      width: 64px !important;
+      .el-menu--collapse > .sideItem .el-menu-item [class^='el-icon-'],
+      .el-menu--collapse
+        > .sideItem
+        .el-submenu
+        > .el-submenu__title
+        [class^='el-icon-'] {
+        margin: 0;
+        vertical-align: middle;
+        width: 24px;
+        text-align: center;
+      }
+      .el-menu--collapse > .sideItem .el-menu-item span,
+      .el-menu--collapse > .sideItem .el-submenu > .el-submenu__title span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
+      .el-menu--collapse > .sideItem .el-menu-item .el-submenu__icon-arrow,
+      .el-menu--collapse
+        > .sideItem
+        .el-submenu
+        > .el-submenu__title
+        .el-submenu__icon-arrow {
+        display: none;
+      }
+    }
+    .header_l {
+      width: 64px !important;
+      overflow: hidden;
+      .logoLink {
+        overflow: hidden;
+        margin-left: 19px;
+      }
+    }
+    .header_r,
+    .rightPanel {
+      margin-left: 64px;
+    }
+  }
+}

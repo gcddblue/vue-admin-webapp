@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :class="{ closeBar: opened }">
     <m-header></m-header>
     <div class="wrapper_con">
       <side-bar></side-bar>
@@ -13,23 +13,15 @@
 <script>
 import SideBar from './components/sideBar'
 import MHeader from './components/header'
+import { mapGetters } from 'vuex'
 export default {
   name: 'layout',
+  computed: {
+    ...mapGetters(['opened'])
+  },
   components: {
     SideBar,
     MHeader
   }
 }
 </script>
-<style scoped lang="scss">
-.wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.rightPanel {
-  margin-left: 200px;
-  padding-top: 50px;
-  background-color: #fff;
-}
-</style>
