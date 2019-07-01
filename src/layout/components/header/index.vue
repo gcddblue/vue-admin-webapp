@@ -2,12 +2,13 @@
   <div class="header">
     <div class="header_l">
       <a href="javascript:;" class="logoLink"
-        ><img src="./logo.png" alt="logo" />Logo</a
+        ><img src="./logo.png" alt="logo" />Vue Project</a
       >
     </div>
     <div class="header_r">
       <div class="headr_d1">
         <side-collapse class="sidecoll"></side-collapse>
+        <bread-crumb class="bread"></bread-crumb>
       </div>
     </div>
   </div>
@@ -15,6 +16,7 @@
 
 <script>
 import SideCollapse from '@/components/SideCollapse'
+import BreadCrumb from '@/components/BreadCrumb'
 export default {
   // watch: {
   //   $route(route) {
@@ -22,7 +24,8 @@ export default {
   //   }
   // }
   components: {
-    SideCollapse
+    SideCollapse,
+    BreadCrumb
   }
 }
 </script>

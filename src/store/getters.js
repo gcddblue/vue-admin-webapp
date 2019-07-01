@@ -5,7 +5,12 @@ const getters = {
   introduce: state => state.user.introduce,
   routes: state => state.permission.routes,
   addRoutes: state => state.permission.addRoutes,
-  sideBarList: state => state.permission.sideBarList,
-  opened: state => state.app.opened
+  opened: state => {
+    if (state.app.opened === 'false') {
+      return false
+    } else if (state.app.opened === 'true') {
+      return true
+    }
+  }
 }
 export default getters

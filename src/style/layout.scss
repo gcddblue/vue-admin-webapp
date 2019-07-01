@@ -60,15 +60,18 @@
 }
 .logoLink {
   color: #fff;
-  font-size: 20px;
-  margin: 9px 0 0 23px;
+  font-size: 15px;
+  margin-left: 18px;
   display: inline-block;
-  font-weight: bold;
-  font-family: serif;
+  font-weight: initial;
+  height: 100%;
+  line-height: 50px;
   img {
     height: 28px;
-    vertical-align: sub;
+    vertical-align: middle;
     margin-right: 8px;
+    position: relative;
+    top: -3px;
   }
 }
 .headr_d1 {
@@ -78,6 +81,10 @@
   .sidecoll {
     float: left;
     margin-top: 16px;
+  }
+  .bread {
+    float: left;
+    margin: 18px 0 0 20px;
   }
 }
 // collapse
@@ -116,10 +123,6 @@
     .header_l {
       width: 64px !important;
       overflow: hidden;
-      .logoLink {
-        overflow: hidden;
-        margin-left: 19px;
-      }
     }
     .header_r,
     .rightPanel {

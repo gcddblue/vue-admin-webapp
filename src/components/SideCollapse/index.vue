@@ -2,7 +2,7 @@
   <div class="sideCollapse">
     <i
       :class="{ 'el-icon-s-unfold': opened, 'el-icon-s-fold': !opened }"
-      @click="toggleOpen"
+      @click="toggleOpen()"
     ></i>
   </div>
 </template>

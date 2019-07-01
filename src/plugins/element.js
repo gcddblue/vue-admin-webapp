@@ -12,7 +12,9 @@ import {
   MenuItemGroup,
   Submenu,
   MenuItem,
-  Tooltip
+  Tooltip,
+  Breadcrumb,
+  BreadcrumbItem
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -31,3 +33,5 @@ Vue.use(MenuItemGroup)
 Vue.use(Submenu)
 Vue.use(MenuItem)
 Vue.use(Tooltip)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
