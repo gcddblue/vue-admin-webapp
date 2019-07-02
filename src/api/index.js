@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Qs from 'qs'
 import store from '@/store'
-import router from 'vue-router'
+import router from '@/router'
 import { Loading, Message } from 'element-ui'
 
 const $axios = axios.create({

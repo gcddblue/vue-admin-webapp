@@ -1,5 +1,6 @@
 import { login, getInfo } from '@/api/login'
 import { Message } from 'element-ui'
+import router from '@/router'
 
 const state = {
   token: localStorage.getItem('token') ? localStorage.getItem('token') : '', // 认证凭证'
@@ -14,6 +15,9 @@ const mutations = {
   },
   DEL_TOKEN(state) {
     state.token = ''
+    state.userName = ''
+    state.roles = ''
+    state.introduce = ''
     localStorage.removeItem('token')
   },
   SET_ROLES(state, payload) {
@@ -45,6 +49,15 @@ const actions = {
         .catch(error => {
           reject(error)
         })
+    })
+  },
+  loginOut({ commit }) {
+    commit('DEL_TOKEN')
+    router.push({
+      path: '/login',
+      query: {
+        redirect: router.currentRoute.fullPath
+      }
     })
   },
   _getInfo({ commit }) {

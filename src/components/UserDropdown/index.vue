@@ -17,9 +17,7 @@
           >
         </el-dropdown-item>
         <el-dropdown-item divided>
-          <router-link to="/"
-            ><i class="el-icon-switch-button"></i>登出</router-link
-          >
+          <a @click="_loginOut()"><i class="el-icon-switch-button"></i>登出</a>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -31,6 +29,11 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['userName'])
+  },
+  methods: {
+    _loginOut() {
+      this.$store.dispatch('user/loginOut')
+    }
   }
 }
 </script>
