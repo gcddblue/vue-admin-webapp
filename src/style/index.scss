@@ -50,8 +50,10 @@ h6 {
 a {
   color: inherit;
   text-decoration: none;
+  color: #606266;
   &:hover {
     text-decoration: none;
+    color: #409eff;
   }
 }
 body {
@@ -64,6 +66,14 @@ body {
 
 #app {
   height: 100%;
+}
+#app .clearFixed:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 .loginCon .el-input__inner {
   background: rgba(0, 0, 0, 0.1);

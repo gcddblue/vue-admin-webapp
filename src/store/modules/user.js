@@ -28,7 +28,7 @@ const mutations = {
 }
 const actions = {
   // user login
-  login({ commit }, formdatas) {
+  _login({ commit }, formdatas) {
     return new Promise((resolve, reject) => {
       login(formdatas)
         .then(res => {
@@ -47,7 +47,7 @@ const actions = {
         })
     })
   },
-  getInfo({ commit }) {
+  _getInfo({ commit }) {
     return new Promise((resolve, reject) => {
       getInfo()
         .then(res => {

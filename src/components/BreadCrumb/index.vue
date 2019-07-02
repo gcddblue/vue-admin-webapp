@@ -1,15 +1,41 @@
 <template>
   <div class="breadDiv">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-      <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      <el-breadcrumb-item
+        v-for="(item, index) in breadList"
+        :to="item.path"
+        :key="index"
+        >{{ item.meta.title }}</el-breadcrumb-item
+      >
     </el-breadcrumb>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      breadList: []
+    }
+  },
+  watch: {
+    $route: {
+      handler(route) {
+        let allList = route.matched.filter(item => {
+          if (item.meta && item.meta.title) {
+            if (item.redirect) {
+              item.path = ''
+            }
+            return true
+          }
+        })
+        if (allList[0].path !== '/' && allList[0].path !== '/dashbord') {
+          allList.unshift({ path: '/', meta: { title: '首页' } })
+        }
+        this.breadList = allList
+      },
+      immediate: true
+    }
+  }
+}
 </script>
-<style></style>

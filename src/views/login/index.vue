@@ -82,7 +82,7 @@ export default {
     },
     _login() {
       this.$store
-        .dispatch('user/login', this.ruleForm)
+        .dispatch('user/_login', this.ruleForm)
         .then(res => {
           if (!res.data.success) {
             this.refresh()

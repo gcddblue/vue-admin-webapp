@@ -14,7 +14,11 @@ import {
   MenuItem,
   Tooltip,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Badge
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -35,3 +39,7 @@ Vue.use(MenuItem)
 Vue.use(Tooltip)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+Vue.use(Badge)
