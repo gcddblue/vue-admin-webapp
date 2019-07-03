@@ -1,6 +1,6 @@
 import { login, getInfo } from '@/api/login'
 import { Message } from 'element-ui'
-import router from '@/router'
+import router, { resetRouter } from '@/router'
 
 const state = {
   token: localStorage.getItem('token') ? localStorage.getItem('token') : '', // 认证凭证'
@@ -53,6 +53,7 @@ const actions = {
   },
   loginOut({ commit }) {
     commit('DEL_TOKEN')
+    resetRouter()
     router.push({
       path: '/login',
       query: {

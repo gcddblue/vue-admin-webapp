@@ -59,7 +59,7 @@ export default {
           return true
         }
       })
-      if (newChildren.length === 1) {
+      if (newChildren.length === 1 && !item.meta) {
         this.childItem = newChildren[0]
         return true
       }

@@ -25,9 +25,6 @@
 import SidebarItem from './SideBarItem'
 import { mapGetters } from 'vuex'
 export default {
-  data() {
-    return {}
-  },
   components: { SidebarItem },
   computed: {
     ...mapGetters(['routes', 'opened']),
