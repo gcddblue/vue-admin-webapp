@@ -3,7 +3,7 @@
     <m-header></m-header>
     <div class="wrapper_con">
       <side-bar></side-bar>
-      <div class="rightPanel">
+      <div class="pageMain">
         <router-view></router-view>
       </div>
     </div>

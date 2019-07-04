@@ -1,8 +1,19 @@
 <template>
   <div class="dashbord">
-    <p>首页</p>
-    <el-button @click="getNum()">随机数</el-button>
-    <p>{{ num }}</p>
+    <el-row class="infoCrads">
+      <el-col :span="6">
+        <div class="cardItem"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cardItem"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cardItem"></div>
+      </el-col>
+      <el-col :span="6">
+        <div class="cardItem"></div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -12,15 +23,20 @@ export default {
     return {
       num: ''
     }
-  },
-  methods: {
-    getNum() {
-      this.num = this.getRandomNum(2, 4)
-    },
-    getRandomNum(start, end) {
-      return Math.floor(Math.random() * (end - 1) + start)
-    }
   }
 }
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.dashbord {
+  padding: 36px 10px;
+}
+.infoCrads {
+  .el-col {
+    padding: 0 20px;
+    .cardItem {
+      height: 108px;
+      background: #fff;
+    }
+  }
+}
+</style>

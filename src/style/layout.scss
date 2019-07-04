@@ -2,12 +2,18 @@
   .wrapper {
     @extend %width-height;
     position: relative;
+    background-color: $bg-color;
+    overflow: hidden;
+    .wrapper_con {
+      min-height: calc(100% - 50px);
+      width: 100%;
+      margin-top: 50px;
+    }
   }
-  .rightPanel {
+  .pageMain {
     margin-left: 200px;
-    padding-top: 50px;
-    background-color: #fff;
     transition: all 0.3s;
+    overflow: hidden;
   }
 }
 // sideBar
@@ -184,7 +190,7 @@
       overflow: hidden;
     }
     .header_r,
-    .rightPanel {
+    .pageMain {
       margin-left: 64px;
     }
   }
