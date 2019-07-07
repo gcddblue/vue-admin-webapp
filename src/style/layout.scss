@@ -18,7 +18,7 @@
 }
 // sideBar
 #app {
-  .slideBar {
+  .sideBar {
     width: $sideBarWidth;
     height: calc(100% - 50px);
     background-color: $dark-blue;
@@ -155,7 +155,7 @@
 // collapse
 #app {
   .closeBar {
-    .slideBar {
+    .sideBar {
       width: 64px !important;
       .el-menu--collapse > .sideItem .el-menu-item [class^='el-icon-'],
       .el-menu--collapse

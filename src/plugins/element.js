@@ -18,7 +18,9 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Badge
+  Badge,
+  Table,
+  TableColumn
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -43,3 +45,5 @@ Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 Vue.use(Badge)
+Vue.use(Table)
+Vue.use(TableColumn)

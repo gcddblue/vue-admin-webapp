@@ -1,5 +1,5 @@
 <template>
-  <div class="slideBar">
+  <div class="sideBar">
     <el-scrollbar>
       <el-menu
         :default-active="activeMenu"
@@ -8,6 +8,7 @@
         text-color="#b5b6bd"
         active-text-color="rgb(79, 148, 212)"
         mode="vertical"
+        :collapse-transition="false"
         :collapse="opened"
       >
         <sidebar-item

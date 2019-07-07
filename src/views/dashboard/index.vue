@@ -8,7 +8,7 @@
             <count-to
               class="cardItem_p0 color-green1"
               :startVal="startVal"
-              :endVal="endVal1"
+              :endVal="vistors"
               :duration="2000"
             ></count-to>
             <p class="cardItem_p1">Total Visitors</p>
@@ -24,7 +24,7 @@
             <count-to
               class="cardItem_p0 color-blue"
               :startVal="startVal"
-              :endVal="endVal2"
+              :endVal="message"
               :duration="2000"
             ></count-to>
             <p class="cardItem_p1">Messages</p>
@@ -40,7 +40,7 @@
             <count-to
               class="cardItem_p0 color-red"
               :startVal="startVal"
-              :endVal="endVal3"
+              :endVal="order"
               :duration="2000"
             ></count-to>
             <p class="cardItem_p1">Total Order Placeed</p>
@@ -56,7 +56,7 @@
             <count-to
               class="cardItem_p0 color-green2"
               :startVal="startVal"
-              :endVal="endVal4"
+              :endVal="profit"
               :duration="2000"
             ></count-to>
             <p class="cardItem_p1">Total Profit</p>
@@ -69,32 +69,69 @@
     </el-row>
     <!-- end -->
     <!-- lineEcharts -->
-    <div class="whiteBox"></div>
     <line-charts class="lCharts"></line-charts>
     <!-- end -->
+    <el-row class="tableChart">
+      <el-col :span="16">
+        <el-table :data="tableData" border>
+          <el-table-column prop="id" label="ID#"></el-table-column>
+          <el-table-column prop="name" label="产品名称"></el-table-column>
+          <el-table-column prop="dealer" label="经销商"></el-table-column>
+          <el-table-column prop="price" label="价格"></el-table-column>
+          <el-table-column prop="quantity" label="数量"></el-table-column>
+          <el-table-column prop="status" label="状态"></el-table-column>
+        </el-table>
+      </el-col>
+      <el-col :span="8"></el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 import CountTo from 'vue-count-to'
 import LineCharts from './components/LineCharts'
+import { getCardsData } from '@/api/dashboard'
 export default {
   data() {
     return {
       startVal: 0,
-      endVal1: 27800,
-      endVal2: 200,
-      endVal3: 1000,
-      endVal4: 102200
+      vistors: 0,
+      message: 0,
+      order: 0,
+      profit: 0,
+      tableData: [
+        {
+          id: 1,
+          name: 'iphone x',
+          dealer: '苏宁易购',
+          price: '7200',
+          quantity: '100',
+          status: '已完成'
+        }
+      ]
     }
+  },
+  created() {
+    this._getCardsData()
   },
   components: {
     CountTo,
     LineCharts
+  },
+  methods: {
+    _getCardsData() {
+      getCardsData().then(res => {
+        this.vistors = res.data.vistors
+        this.message = res.data.message
+        this.order = res.data.order
+        this.profit = res.data.profit
+      })
+    }
   }
 }
 </script>
 <style scoped lang="scss">
+$mgTop: 30px;
 .color-green1 {
   color: #40c9c6 !important;
 }
@@ -144,6 +181,10 @@ export default {
 }
 .lCharts {
   background: #fff;
-  margin-top: 30px;
+  margin-top: $mgTop;
+  padding: 30px 0;
+}
+.tableChart {
+  margin-top: $mgTop;
 }
 </style>

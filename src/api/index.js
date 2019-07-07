@@ -2,12 +2,14 @@ import axios from 'axios'
 import Qs from 'qs'
 import store from '@/store'
 import router from '@/router'
+import Vue from 'vue'
 import { Loading, Message } from 'element-ui'
 
 const $axios = axios.create({
   timeout: 30000
   // baseURL: process.env.VUE_APP_BASE_API
 })
+Vue.prototype.$http = axios // 并发请求
 let loading = null
 
 // 请求拦截器
