@@ -79,7 +79,7 @@
         <pie-charts class="pieCharts"></pie-charts>
       </el-col>
     </el-row>
-    <bar-charts class="barCharts"></bar-charts>
+    <bar-charts class="barCharts" :barData="barData"></bar-charts>
   </div>
 </template>
 
@@ -89,7 +89,12 @@ import LineCharts from './components/LineCharts'
 import PieCharts from './components/PieCharts'
 import TableShow from './components/TableShow'
 import BarCharts from './components/BarCharts'
-import { getCardsData, getTableData, getLineData } from '@/api/dashboard'
+import {
+  getCardsData,
+  getTableData,
+  getLineData,
+  getBarData
+} from '@/api/dashboard'
 export default {
   data() {
     return {
@@ -99,7 +104,8 @@ export default {
       order: 0,
       profit: 0,
       tableData: [],
-      lineChartData: {}
+      lineChartData: {},
+      barData: {}
     }
   },
   created() {
@@ -114,16 +120,19 @@ export default {
   },
   methods: {
     _getAllData() {
-      this.$http.all([getCardsData(), getLineData(), getTableData()]).then(
-        this.$http.spread((cardData, lineData, tabData) => {
-          this.vistors = cardData.data.vistors
-          this.message = cardData.data.message
-          this.order = cardData.data.order
-          this.profit = cardData.data.profit
-          this.lineChartData = lineData.data
-          this.tableData = tabData.data.tableList
-        })
-      )
+      this.$http
+        .all([getCardsData(), getLineData(), getTableData(), getBarData()])
+        .then(
+          this.$http.spread((cardData, lineData, tabData, barData) => {
+            this.vistors = cardData.data.vistors
+            this.message = cardData.data.message
+            this.order = cardData.data.order
+            this.profit = cardData.data.profit
+            this.lineChartData = lineData.data
+            ;(this.tableData = tabData.data.tableList),
+              (this.barData = barData.data)
+          })
+        )
     }
   }
 }

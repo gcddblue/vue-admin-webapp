@@ -12,3 +12,7 @@ export function getTableData() {
   const url = '/apis/getTableList'
   return $axios.get(url)
 }
+export function getBarData() {
+  const url = '/apis/getBarData'
+  return $axios.get(url)
+}

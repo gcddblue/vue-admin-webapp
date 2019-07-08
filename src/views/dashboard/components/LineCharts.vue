@@ -48,7 +48,7 @@ export default {
   methods: {
     initEcharts() {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
-      if (this.lineChartData.length > 0) {
+      if (Object.keys(this.lineChartData).length > 0) {
         this._setOption(this.lineChartData.inPrice, this.lineChartData.outPrice)
       }
     },

@@ -16,11 +16,23 @@ export default {
     height: {
       type: String,
       default: '350px'
+    },
+    barData: {
+      type: Object,
+      required: true
     }
   },
   data() {
     return {
       mycharts: null
+    }
+  },
+  watch: {
+    barData: {
+      deep: true,
+      handler(val) {
+        this._setOption(val.y2017, val.y2018, val.y2019)
+      }
     }
   },
   mounted() {
@@ -31,41 +43,73 @@ export default {
   methods: {
     initEcharts() {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
-      this._setOption()
+      if (Object.keys(this.barData).length > 0) {
+        this._setOption(
+          this.barData.y2017,
+          this.barData.y2018,
+          this.barData.y2019
+        )
+      }
     },
-    _setOption() {
+    _setOption(y2017, y2018, y2019) {
       this.mycharts.setOption({
-        legend: {},
-        tooltip: {},
-        dataset: {
-          dimensions: ['product', '2015', '2016', '2017'],
-          source: [
-            {
-              product: 'Matcha Latte',
-              '2015': 43.3,
-              '2016': 85.8,
-              '2017': 93.7
-            },
-            { product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1 },
-            {
-              product: 'Cheese Cocoa',
-              '2015': 86.4,
-              '2016': 65.2,
-              '2017': 82.5
-            },
-            {
-              product: 'Walnut Brownie',
-              '2015': 72.4,
-              '2016': 53.9,
-              '2017': 39.1
-            }
+        title: {
+          text: 'Yearly Expense',
+          left: '16'
+        },
+        legend: {
+          data: ['2017', '2018', '2019']
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
+        grid: {
+          left: '20',
+          right: '20',
+          bottom: '3',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          data: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
           ]
         },
-        xAxis: { type: 'category' },
         yAxis: {},
         // Declare several bar series, each will be mapped
         // to a column of dataset.source by default.
-        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+        series: [
+          {
+            type: 'bar',
+            name: '2017',
+            data: y2017
+          },
+          {
+            type: 'bar',
+            name: '2018',
+            data: y2018
+          },
+          {
+            type: 'bar',
+            name: '2019',
+            data: y2019
+          }
+        ]
       })
     }
   }
