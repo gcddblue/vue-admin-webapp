@@ -20,7 +20,8 @@ import {
   DropdownItem,
   Badge,
   Table,
-  TableColumn
+  TableColumn,
+  Tag
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -47,3 +48,4 @@ Vue.use(DropdownItem)
 Vue.use(Badge)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Tag)

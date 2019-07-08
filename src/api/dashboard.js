@@ -8,3 +8,7 @@ export function getLineData() {
   const url = '/apis/getLineData'
   return $axios.get(url)
 }
+export function getTableData() {
+  const url = '/apis/getTableList'
+  return $axios.get(url)
+}

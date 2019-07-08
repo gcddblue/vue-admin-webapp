@@ -3,7 +3,6 @@
     @extend %width-height;
     position: relative;
     background-color: $bg-color;
-    overflow: hidden;
     .wrapper_con {
       min-height: calc(100% - 50px);
       width: 100%;
@@ -13,7 +12,7 @@
   .pageMain {
     margin-left: 200px;
     transition: all 0.3s;
-    overflow: hidden;
+    background-color: #f0f3f4;
   }
 }
 // sideBar
@@ -46,6 +45,7 @@
   top: 0;
   width: 100%;
   left: 0;
+  z-index: 999;
 }
 .header_l {
   width: 200px;

@@ -69,28 +69,27 @@
     </el-row>
     <!-- end -->
     <!-- lineEcharts -->
-    <line-charts class="lCharts"></line-charts>
+    <line-charts class="lCharts" :lineChartData="lineChartData"></line-charts>
     <!-- end -->
     <el-row class="tableChart">
       <el-col :span="16">
-        <el-table :data="tableData" border>
-          <el-table-column prop="id" label="ID#"></el-table-column>
-          <el-table-column prop="name" label="产品名称"></el-table-column>
-          <el-table-column prop="dealer" label="经销商"></el-table-column>
-          <el-table-column prop="price" label="价格"></el-table-column>
-          <el-table-column prop="quantity" label="数量"></el-table-column>
-          <el-table-column prop="status" label="状态"></el-table-column>
-        </el-table>
+        <table-show :tableData="tableData" class="tableShow"></table-show>
       </el-col>
-      <el-col :span="8"></el-col>
+      <el-col :span="8">
+        <pie-charts class="pieCharts"></pie-charts>
+      </el-col>
     </el-row>
+    <bar-charts class="barCharts"></bar-charts>
   </div>
 </template>
 
 <script>
 import CountTo from 'vue-count-to'
 import LineCharts from './components/LineCharts'
-import { getCardsData } from '@/api/dashboard'
+import PieCharts from './components/PieCharts'
+import TableShow from './components/TableShow'
+import BarCharts from './components/BarCharts'
+import { getCardsData, getTableData, getLineData } from '@/api/dashboard'
 export default {
   data() {
     return {
@@ -99,39 +98,41 @@ export default {
       message: 0,
       order: 0,
       profit: 0,
-      tableData: [
-        {
-          id: 1,
-          name: 'iphone x',
-          dealer: '苏宁易购',
-          price: '7200',
-          quantity: '100',
-          status: '已完成'
-        }
-      ]
+      tableData: [],
+      lineChartData: {}
     }
   },
   created() {
-    this._getCardsData()
+    this._getAllData()
   },
   components: {
     CountTo,
-    LineCharts
+    LineCharts,
+    PieCharts,
+    TableShow,
+    BarCharts
   },
   methods: {
-    _getCardsData() {
-      getCardsData().then(res => {
-        this.vistors = res.data.vistors
-        this.message = res.data.message
-        this.order = res.data.order
-        this.profit = res.data.profit
-      })
+    _getAllData() {
+      this.$http.all([getCardsData(), getLineData(), getTableData()]).then(
+        this.$http.spread((cardData, lineData, tabData) => {
+          this.vistors = cardData.data.vistors
+          this.message = cardData.data.message
+          this.order = cardData.data.order
+          this.profit = cardData.data.profit
+          this.lineChartData = lineData.data
+          this.tableData = tabData.data.tableList
+        })
+      )
     }
   }
 }
 </script>
 <style scoped lang="scss">
 $mgTop: 30px;
+@mixin shadow {
+  box-shadow: 0 0 10px #e2e2e2;
+}
 .color-green1 {
   color: #40c9c6 !important;
 }
@@ -159,7 +160,7 @@ $mgTop: 30px;
 }
 .cardItem {
   color: #666;
-  box-shadow: 0 0 10px #e2e2e2;
+  @include shadow();
   .cardItem_txt {
     float: left;
     margin: 26px 0 0 20px;
@@ -183,6 +184,18 @@ $mgTop: 30px;
   background: #fff;
   margin-top: $mgTop;
   padding: 30px 0;
+  @include shadow();
+}
+.barCharts {
+  background: #fff;
+  margin-top: $mgTop;
+  padding: 30px 0;
+  @include shadow();
+}
+.pieCharts {
+  background: #fff;
+  padding: 20px 0;
+  @include shadow();
 }
 .tableChart {
   margin-top: $mgTop;
