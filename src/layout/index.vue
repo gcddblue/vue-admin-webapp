@@ -9,9 +9,7 @@
     </transition>
     <div class="wrapper_con">
       <side-bar></side-bar>
-      <div class="pageMain">
-        <router-view></router-view>
-      </div>
+      <page-main></page-main>
     </div>
   </div>
 </template>
@@ -20,6 +18,7 @@
 import SideBar from './components/sideBar'
 import MHeader from './components/header'
 import NotificatBar from '@/components/NotificatBar'
+import PageMain from './components/PageMain'
 import { mapGetters } from 'vuex'
 export default {
   name: 'layout',
@@ -29,7 +28,8 @@ export default {
   components: {
     SideBar,
     MHeader,
-    NotificatBar
+    NotificatBar,
+    PageMain
   }
 }
 </script>

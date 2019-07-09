@@ -26,6 +26,7 @@
     left: 0;
     overflow: hidden;
     transition: width 0.3s;
+    z-index: 999;
     .el-scrollbar {
       height: 100%;
       .el-scrollbar__wrap {
