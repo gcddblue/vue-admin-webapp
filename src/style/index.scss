@@ -67,6 +67,9 @@ body {
 #app {
   height: 100%;
 }
+i[class^='el-icon'] {
+  color: $text-color;
+}
 #app .clearFixed:after {
   content: '';
   display: block;

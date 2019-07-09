@@ -11,6 +11,7 @@ const getters = {
     } else if (state.app.opened === 'true') {
       return true
     }
-  }
+  },
+  msgIsShow: state => state.app.msgIsShow
 }
 export default getters

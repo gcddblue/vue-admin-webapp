@@ -8,10 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "animate.css": "^3.7.2",
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "element-ui": "^2.4.5",
+    "screenfull": "^4.2.0",
     "vue": "^2.6.10",
     "vue-count-to": "^1.0.13",
     "vue-router": "^3.0.3",

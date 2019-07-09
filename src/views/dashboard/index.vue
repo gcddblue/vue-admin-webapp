@@ -71,6 +71,7 @@
     <!-- lineEcharts -->
     <line-charts class="lCharts" :lineChartData="lineChartData"></line-charts>
     <!-- end -->
+    <!-- table and pie -->
     <el-row class="tableChart">
       <el-col :span="16">
         <table-show :tableData="tableData" class="tableShow"></table-show>
@@ -79,7 +80,10 @@
         <pie-charts class="pieCharts"></pie-charts>
       </el-col>
     </el-row>
+    <!-- end -->
+    <!-- bar chart -->
     <bar-charts class="barCharts" :barData="barData"></bar-charts>
+    <!-- end -->
   </div>
 </template>
 

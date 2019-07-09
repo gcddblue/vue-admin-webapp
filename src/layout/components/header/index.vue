@@ -13,11 +13,12 @@
       <div class="headr_d2">
         <ul class="headrUl clearFixed">
           <li>
-            <el-badge is-dot>
-              <router-link to="/"
-                ><i class="el-icon-message-solid iconFont"></i
-              ></router-link>
+            <el-badge is-dot @click.native="toggleMsgShow">
+              <i class="el-icon-message-solid iconFont"></i>
             </el-badge>
+          </li>
+          <li>
+            <full-screen></full-screen>
           </li>
           <li>
             <user-dropdown></user-dropdown>
@@ -32,11 +33,18 @@
 import SideCollapse from '@/components/SideCollapse'
 import BreadCrumb from '@/components/BreadCrumb'
 import UserDropdown from '@/components/UserDropdown'
+import FullScreen from '@/components/FullScreen'
 export default {
   components: {
     SideCollapse,
     BreadCrumb,
-    UserDropdown
+    UserDropdown,
+    FullScreen
+  },
+  methods: {
+    toggleMsgShow() {
+      this.$store.commit('app/SET_MSGISOPEN')
+    }
   }
 }
 </script>
