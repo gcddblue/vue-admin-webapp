@@ -42,6 +42,20 @@ export const currencyRoutes = [
         meta: { title: '首页', icon: 'el-icon-s-data' }
       }
     ]
+  },
+  {
+    path: '/personal',
+    component: Layout,
+    redirect: '/personal/index',
+    hidden: true,
+    children: [
+      {
+        path: 'index',
+        name: 'Personal',
+        component: () => import('@/views/personal'),
+        meta: { title: '个人中心' }
+      }
+    ]
   }
 ]
 /*动态添加routers*/
