@@ -12,15 +12,15 @@
       </div>
       <div class="headr_d2">
         <ul class="headrUl clearFixed">
-          <li>
+          <li id="domMessage">
             <el-badge is-dot @click.native="toggleMsgShow">
               <i class="el-icon-message-solid iconFont"></i>
             </el-badge>
           </li>
-          <li>
+          <li id="domFullScreen">
             <full-screen></full-screen>
           </li>
-          <li>
+          <li id="domPersonal">
             <user-dropdown></user-dropdown>
           </li>
         </ul>

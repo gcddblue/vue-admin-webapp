@@ -1,5 +1,5 @@
 <template>
-  <div class="sideCollapse">
+  <div class="sideCollapse" id="domColapse">
     <i
       :class="{ 'el-icon-s-unfold': opened, 'el-icon-s-fold': !opened }"
       @click="toggleOpen()"

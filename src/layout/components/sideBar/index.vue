@@ -1,5 +1,5 @@
 <template>
-  <div class="sideBar">
+  <div class="sideBar" id="domSideBar">
     <el-scrollbar>
       <el-menu
         :default-active="activeMenu"

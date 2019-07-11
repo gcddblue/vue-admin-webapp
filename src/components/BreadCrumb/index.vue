@@ -1,5 +1,5 @@
 <template>
-  <div class="breadDiv">
+  <div class="breadDiv" id="domBread">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item
         v-for="(item, index) in breadList"

@@ -20,8 +20,10 @@ import MHeader from './components/header'
 import NotificatBar from '@/components/NotificatBar'
 import PageMain from './components/PageMain'
 import { mapGetters } from 'vuex'
+import driver from '@/mixins/useDriver'
 export default {
   name: 'layout',
+  mixins: [driver],
   computed: {
     ...mapGetters(['opened', 'msgIsShow'])
   },
