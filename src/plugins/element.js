@@ -21,7 +21,12 @@ import {
   Badge,
   Table,
   TableColumn,
-  Tag
+  Tag,
+  Tabs,
+  TabPane,
+  Timeline,
+  TimelineItem,
+  Card
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -49,3 +54,8 @@ Vue.use(Badge)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Tag)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
+Vue.use(Card)
