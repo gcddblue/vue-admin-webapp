@@ -159,7 +159,7 @@ $mgTop: 30px;
   color: #34bfa3 !important;
 }
 .dashbord {
-  padding: 36px 30px;
+  background-color: #f0f3f4;
 }
 .infoCrads {
   margin: 0 -20px 0 -20px;

@@ -56,6 +56,19 @@ export const currencyRoutes = [
         meta: { title: '个人中心' }
       }
     ]
+  },
+  {
+    path: '/driver',
+    component: Layout,
+    redirect: '/driver/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Driver',
+        component: () => import('@/views/driver-page'),
+        meta: { title: '引导指南', icon: 'el-icon-s-flag' }
+      }
+    ]
   }
 ]
 /*动态添加routers*/

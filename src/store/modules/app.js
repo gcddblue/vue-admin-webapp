@@ -5,7 +5,10 @@ const state = {
   opened: sessionStorage.getItem('open')
     ? sessionStorage.getItem('open')
     : 'false',
-  msgIsShow: false
+  msgIsShow: false,
+  showDriver: localStorage.getItem('driver')
+    ? localStorage.getItem('driver')
+    : 'yes'
 }
 const mutations = {
   SET_OPENED(state, payload) {
@@ -14,6 +17,10 @@ const mutations = {
   },
   SET_MSGISOPEN(state) {
     state.msgIsShow = !state.msgIsShow
+  },
+  SET_DRIVER(state, payload) {
+    state.showDriver = payload
+    localStorage.setItem('driver', payload)
   }
 }
 export default {

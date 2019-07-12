@@ -1,5 +1,5 @@
 <template>
-  <div class="personal">
+  <div class="personal noPadding">
     <div class="personal_h">
       <div class="perh_d1">
         <div class="perh_info">

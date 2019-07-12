@@ -24,8 +24,19 @@ import driver from '@/mixins/useDriver'
 export default {
   name: 'layout',
   mixins: [driver],
+  data() {
+    return {
+      driverMoud: null
+    }
+  },
+  mounted() {
+    if (this.showDriver === 'yes') {
+      this.guide()
+      this.$store.commit('app/SET_DRIVER', 'no')
+    }
+  },
   computed: {
-    ...mapGetters(['opened', 'msgIsShow'])
+    ...mapGetters(['opened', 'msgIsShow', 'showDriver'])
   },
   components: {
     SideBar,

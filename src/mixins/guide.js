@@ -5,7 +5,8 @@ const steps = [
       title: '菜单导航',
       description: '点击菜单可切换右侧菜单内容',
       position: 'right'
-    }
+    },
+    padding: 0
   },
   {
     element: '#domColapse',
@@ -37,8 +38,7 @@ const steps = [
       title: '全屏显示',
       description: '点击图标，放大全屏显示系统',
       position: 'left'
-    },
-    padding: 0
+    }
   },
   {
     element: '#domPersonal',
@@ -46,7 +46,8 @@ const steps = [
       title: '个人中心',
       description: '点击图标，显示个人信息链接',
       position: 'left'
-    }
+    },
+    padding: 0
   }
 ]
 export default steps

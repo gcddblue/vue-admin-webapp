@@ -22,11 +22,12 @@ function hasMetaRoles(route, roles) {
 function forSearchArr(arr, roles) {
   let arrNew = []
   for (let item of arr) {
-    if (hasMetaRoles(item, roles)) {
-      if (item.children) {
-        item.children = forSearchArr(item.children, roles)
+    let itemNew = { ...item } //解决浅拷贝共享同一内存地址
+    if (hasMetaRoles(itemNew, roles)) {
+      if (itemNew.children) {
+        itemNew.children = forSearchArr(itemNew.children, roles)
       }
-      arrNew.push(item)
+      arrNew.push(itemNew)
     }
   }
   return arrNew
@@ -41,8 +42,9 @@ const actions = {
       } else {
         routes = forSearchArr(asyncRoutes, roles)
       }
+      console.log(asyncRoutes)
       commit('SET_ROUTES', routes)
-      resolve(asyncRoutes)
+      resolve(routes)
     })
   }
 }
