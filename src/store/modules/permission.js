@@ -42,7 +42,6 @@ const actions = {
       } else {
         routes = forSearchArr(asyncRoutes, roles)
       }
-      console.log(asyncRoutes)
       commit('SET_ROUTES', routes)
       resolve(routes)
     })

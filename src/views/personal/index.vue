@@ -5,9 +5,9 @@
         <div class="perh_info">
           <p class="perh_p0">{{ userName }}</p>
           <div class="chatBox">
-            <a href="javascript:;"><i class="iconfont iconweixin"></i></a>
-            <a href="javascript:;"><i class="iconfont icontwitter"></i></a>
-            <a href="javascript:;"><i class="iconfont iconweibo"></i></a>
+            <a href="javascript:;"><i class="iconfont el-icon-weixin"></i></a>
+            <a href="javascript:;"><i class="iconfont el-icon-twitter"></i></a>
+            <a href="javascript:;"><i class="iconfont el-icon-weibo"></i></a>
           </div>
           <p>{{ introduce }}</p>
         </div>
@@ -94,6 +94,9 @@ export default {
       }
     }
     .chatBox {
+      .iconfont {
+        vertical-align: middle;
+      }
       a {
         width: 30px;
         height: 30px;

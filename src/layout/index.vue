@@ -24,11 +24,6 @@ import driver from '@/mixins/useDriver'
 export default {
   name: 'layout',
   mixins: [driver],
-  data() {
-    return {
-      driverMoud: null
-    }
-  },
   mounted() {
     if (this.showDriver === 'yes') {
       this.guide()

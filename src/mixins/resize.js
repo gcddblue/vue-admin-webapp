@@ -8,6 +8,14 @@ export default {
     this.windowInitResize()
     this.sideBarResize()
   },
+  activated() {
+    this.windowInitResize()
+    this.sideBarResize()
+  },
+  deactivated() {
+    this.removeWindowInitResize()
+    this.removeSideBarResize()
+  },
   destroyed() {
     this.removeWindowInitResize()
     this.removeSideBarResize()

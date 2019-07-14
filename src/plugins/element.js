@@ -26,7 +26,8 @@ import {
   TabPane,
   Timeline,
   TimelineItem,
-  Card
+  Card,
+  Pagination
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -59,3 +60,4 @@ Vue.use(TabPane)
 Vue.use(Timeline)
 Vue.use(TimelineItem)
 Vue.use(Card)
+Vue.use(Pagination)

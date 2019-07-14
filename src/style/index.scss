@@ -68,6 +68,9 @@ body {
 #app {
   height: 100%;
 }
+.mtop30 {
+  margin-top: $top30;
+}
 i[class^='el-icon'] {
   color: $text-color;
 }

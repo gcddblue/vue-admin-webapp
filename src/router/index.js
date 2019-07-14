@@ -109,6 +109,30 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/table',
+    name: 'Table',
+    redirect: '/table/base-table',
+    component: Layout,
+    meta: {
+      title: 'Table',
+      icon: 'el-icon-table iconfont'
+    },
+    children: [
+      {
+        path: 'base-table',
+        name: 'BaseTable',
+        component: () => import('@/views/table/common-table'),
+        meta: { title: '普通表格' }
+      },
+      {
+        path: 'complex-table',
+        name: 'ComplexTable',
+        component: () => import('@/views/table/complex-table'),
+        meta: { title: '复杂表格' }
+      }
+    ]
+  },
+  {
     path: '/error',
     component: Layout,
     name: '404',
