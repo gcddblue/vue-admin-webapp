@@ -15,6 +15,7 @@
         <span>带分页表格</span>
       </div>
       <el-table :data="tablePage" border stripe style="width: 100%;">
+        <el-table-column prop="num" label="序号" width="120"></el-table-column>
         <el-table-column prop="id" label="ID#"></el-table-column>
         <el-table-column prop="name" label="产品名称"></el-table-column>
         <el-table-column prop="price" label="价格"></el-table-column>
