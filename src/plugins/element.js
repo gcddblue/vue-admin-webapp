@@ -6,6 +6,8 @@ import {
   Form,
   FormItem,
   Input,
+  Select,
+  Option,
   Message,
   Scrollbar,
   Menu,
@@ -27,10 +29,16 @@ import {
   Timeline,
   TimelineItem,
   Card,
-  Pagination
+  Pagination,
+  Notification,
+  Dialog,
+  DatePicker
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
+}
+Notification.install = () => {
+  Vue.prototype.$notify = Notification
 }
 
 Vue.use(Button)
@@ -40,6 +48,7 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Message)
+Vue.use(Notification)
 Vue.use(Scrollbar)
 Vue.use(Menu)
 Vue.use(MenuItemGroup)
@@ -61,3 +70,7 @@ Vue.use(Timeline)
 Vue.use(TimelineItem)
 Vue.use(Card)
 Vue.use(Pagination)
+Vue.use(Dialog)
+Vue.use(DatePicker)
+Vue.use(Select)
+Vue.use(Option)

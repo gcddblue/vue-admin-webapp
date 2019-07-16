@@ -4,3 +4,7 @@ export function getPageTab1(params) {
   const url = '/apis/getPageData1'
   return $axios.get(url, params)
 }
+export function getPageTab2() {
+  const url = '/apis/getPageData2'
+  return $axios.get(url)
+}
