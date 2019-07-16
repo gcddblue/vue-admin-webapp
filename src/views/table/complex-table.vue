@@ -74,7 +74,7 @@
           <el-input
             type="text"
             v-model="formData.order"
-            disabled="true"
+            :disabled="true"
           ></el-input>
         </el-form-item>
         <el-form-item label="订单时间" prop="time">
@@ -82,6 +82,7 @@
             v-model="formData.time"
             type="datetime"
             placeholder="选择日期时间"
+            value-format="yyyy-MM-dd HH:mm:ss"
           ></el-date-picker>
         </el-form-item>
         <el-form-item label="配送地址" prop="address">
@@ -244,14 +245,26 @@ export default {
       })
     },
     editTable(index, row) {
-      this.formData = { ...row }
+      this.formData = Object.assign({}, row)
       this.diaIsShow = true
       this.rowIndex = index
     },
     changeTab(form) {
       this.$refs[form].validate(valid => {
         if (valid) {
-          alert('pk')
+          // this.tableData[this.rowIndex] = Object.assign({}, this.formData)
+          // let newArr = Object.assign({}, this.tableData)
+          this.$set(
+            this.tableData,
+            this.rowIndex,
+            Object.assign({}, this.formData)
+          )
+          this.$notify({
+            title: '成功',
+            message: '订单已修改成功',
+            type: 'success'
+          })
+          this.diaIsShow = false
         } else {
           return
         }

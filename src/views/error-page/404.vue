@@ -14,7 +14,7 @@ export default {}
   height: 100%;
   text-align: center;
   background: #b5c794 url(../../assets/404img/img-404.png) no-repeat center
-    center;
+    center !important;
   .page404_p0 {
     font-size: 20px;
     color: #fff;

@@ -5,7 +5,7 @@
       border
       style="width: 96%;box-shadow: 0 0 10px #e2e2e2;"
     >
-      <el-table-column prop="id" label="ID#"></el-table-column>
+      <el-table-column prop="id" label="ID#" width="180"></el-table-column>
       <el-table-column prop="name" label="产品名称"></el-table-column>
       <el-table-column prop="price" label="价格"></el-table-column>
       <el-table-column prop="quantity" label="数量"></el-table-column>
