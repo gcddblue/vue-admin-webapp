@@ -1,5 +1,9 @@
 <template>
-  <div class="pageAdmin">pageAdmin1</div>
+  <div class="rolesControl">
+    <el-card>
+      <el-button>添加权限</el-button>
+    </el-card>
+  </div>
 </template>
 
 <script>

@@ -292,8 +292,9 @@ export default {
     // add
     addTab() {
       this.formData = {}
-      this.formData
       this.diaIsShow = true
+      this.formData.order = (Math.random() * 10e18).toString()
+      this.formData.id = this.allList.length + 1
       this.editType = 'add'
       this.$nextTick(() => {
         this.$refs.diaForm.clearValidate()
@@ -358,7 +359,8 @@ export default {
               type: 'success'
             })
           } else {
-            alert('hhh')
+            this.tableData.unshift(Object.assign({}, this.formData))
+            this.allList.push(Object.assign({}, this.formData))
           }
           this.diaIsShow = false
         } else {
