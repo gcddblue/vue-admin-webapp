@@ -10,20 +10,12 @@ const mutations = {
     state.addRoutes = payload
   }
 }
-// 遍历用户权限判断路由是否包含
-function hasMetaRoles(route, roles) {
-  if (route.meta && route.meta.roles) {
-    return roles.some(role => route.meta.roles.includes(role))
-  } else {
-    return true
-  }
-}
 // 遍历asyncRoutes动态路由
-function forSearchArr(arr, roles) {
+function forSearchArr(route, roles) {
   let arrNew = []
-  for (let item of arr) {
+  for (let item of route) {
     let itemNew = { ...item } //解决浅拷贝共享同一内存地址
-    if (hasMetaRoles(itemNew, roles)) {
+    if (roles.includes(itemNew.name)) {
       if (itemNew.children) {
         itemNew.children = forSearchArr(itemNew.children, roles)
       }
@@ -33,11 +25,10 @@ function forSearchArr(arr, roles) {
   return arrNew
 }
 const actions = {
-  getAsyncRoutes({ commit }, roles) {
+  getAsyncRoutes({ commit, rootGetters }, roles) {
     return new Promise(resolve => {
       let routes = []
-      // let sideList = []
-      if (roles.includes('admin')) {
+      if (rootGetters.userName === 'admin') {
         routes = asyncRoutes || ''
       } else {
         routes = forSearchArr(asyncRoutes, roles)

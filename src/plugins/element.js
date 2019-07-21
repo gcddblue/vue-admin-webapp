@@ -32,7 +32,8 @@ import {
   Pagination,
   Notification,
   Dialog,
-  DatePicker
+  DatePicker,
+  Tree
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -74,3 +75,4 @@ Vue.use(Dialog)
 Vue.use(DatePicker)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Tree)

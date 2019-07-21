@@ -13,7 +13,6 @@ import { Message } from 'element-ui'
   meta: {
     title: xxx,  name for sideBars
     icon: xxx,   sideBars icon
-    roles: xxx   premission control,if set 'admin',that mean all sideBar item show, else if do not set roles,that mean no premission for this item
   }
 */
 
@@ -27,11 +26,13 @@ export const currencyRoutes = [
   },
   {
     path: '/404',
+    name: '404',
     component: () => import('@/views/error-page/404.vue'),
     hidden: true
   },
   {
     path: '/',
+    name: 'Home',
     component: Layout,
     redirect: '/dashbord',
     children: [
@@ -45,13 +46,14 @@ export const currencyRoutes = [
   },
   {
     path: '/personal',
+    name: 'Personal',
     component: Layout,
     redirect: '/personal/index',
     hidden: true,
     children: [
       {
         path: 'index',
-        name: 'Personal',
+        name: 'Personal-index',
         component: () => import('@/views/personal'),
         meta: { title: '个人中心' }
       }
@@ -59,12 +61,13 @@ export const currencyRoutes = [
   },
   {
     path: '/driver',
+    name: 'Driver',
     component: Layout,
     redirect: '/driver/index',
     children: [
       {
         path: 'index',
-        name: 'Driver',
+        name: 'Driver-index',
         component: () => import('@/views/driver-page'),
         meta: { title: '引导指南', icon: 'el-icon-s-flag' }
       }
@@ -80,12 +83,11 @@ export const asyncRoutes = [
     redirect: '/permission/page-use',
     meta: {
       title: '权限许可',
-      icon: 'el-icon-lock',
-      roles: ['admin', 'user']
+      icon: 'el-icon-lock'
     },
     children: [
       {
-        path: 'page-use',
+        path: 'page-user',
         name: 'PageUser',
         component: () => import('@/views/permission/page-user'),
         meta: { title: '用户页面', icon: 'el-icon-user' }
@@ -96,15 +98,14 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/page-admin'),
         meta: {
           title: '管理员页面',
-          icon: 'el-icon-user-solid',
-          roles: ['admin']
+          icon: 'el-icon-user-solid'
         }
       },
       {
         path: 'roles',
         name: 'Roles',
         component: () => import('@/views/permission/roles'),
-        meta: { title: '权限设置', icon: 'el-icon-s-tools', roles: ['admin'] }
+        meta: { title: '权限设置', icon: 'el-icon-s-tools' }
       }
     ]
   },
@@ -135,7 +136,7 @@ export const asyncRoutes = [
   {
     path: '/error',
     component: Layout,
-    name: '404',
+    name: 'Error',
     redirect: '/error/404',
     children: [
       {
@@ -149,6 +150,7 @@ export const asyncRoutes = [
   NavTest,
   {
     path: '*',
+    name: '*404',
     redirect: '/404',
     hidden: true
   }
