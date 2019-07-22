@@ -9,6 +9,7 @@ import {
   Select,
   Option,
   Message,
+  MessageBox,
   Scrollbar,
   Menu,
   MenuItemGroup,
@@ -38,6 +39,9 @@ import {
 Message.install = () => {
   Vue.prototype.$message = Message
 }
+MessageBox.install = () => {
+  Vue.prototype.$confirm = MessageBox.confirm
+}
 Notification.install = () => {
   Vue.prototype.$notify = Notification
 }
@@ -49,6 +53,7 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Message)
+Vue.use(MessageBox)
 Vue.use(Notification)
 Vue.use(Scrollbar)
 Vue.use(Menu)

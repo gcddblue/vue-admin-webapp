@@ -1,7 +1,7 @@
 <template>
   <div class="rolesControl">
     <el-card>
-      <el-button type="primary">添加权限</el-button>
+      <el-button type="primary" @click="addRolesTab">添加权限</el-button>
       <el-table
         class="mtop30"
         :data="rolesTab"
@@ -13,24 +13,36 @@
         <el-table-column prop="description" label="说明"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="primary" @click="editRoles(scope.row)"
+            <el-button
+              type="primary"
+              @click="editRoles(scope.$index, scope.row)"
               >编辑</el-button
             >
-            <el-button type="warning">删除</el-button>
+            <el-button
+              type="warning"
+              @click="deleteRoles(scope.$index)"
+              :disabled="isAdmin(scope.row)"
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </el-table>
     </el-card>
     <el-dialog title="权限编辑" :visible.sync="diaIsShow" class="diaForm">
-      <el-form ref="rolesForm" :model="formData" label-width="140px">
-        <el-form-item label="身份">
+      <el-form
+        ref="rolesForm"
+        :model="formData"
+        :rules="rules"
+        label-width="140px"
+      >
+        <el-form-item label="身份" prop="key">
           <el-input
             type="text"
             placeholder="请输入要添加的身份类别"
             v-model="formData.key"
           ></el-input>
         </el-form-item>
-        <el-form-item label="说明">
+        <el-form-item label="说明" prop="description">
           <el-input
             type="text"
             placeholder="请输入相关说明"
@@ -49,7 +61,7 @@
           ></el-tree>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="changeRoles('diaForm', editType)"
+          <el-button type="primary" @click="changeRoles('rolesForm', editType)"
             >确认</el-button
           >
           <el-button @click="diaIsShow = false">取消</el-button>
@@ -68,13 +80,31 @@ export default {
       rolesTab: [],
       diaIsShow: false,
       formData: {},
+      editType: 'update',
+      rules: {
+        key: [
+          {
+            required: true,
+            message: '请输入要添加的身份类别',
+            trigger: 'blur'
+          }
+        ],
+        description: [
+          {
+            required: true,
+            message: '请输入相关说明',
+            trigger: 'blur'
+          }
+        ]
+      },
+      editIndex: 0,
       allRoute: [...currencyRoutes, ...asyncRoutes],
       treeData: [],
       defaultProps: {
         label: 'label',
         children: 'children'
       },
-      strictly: true
+      strictly: false
     }
   },
   created() {
@@ -91,12 +121,82 @@ export default {
           this.$message.error(error)
         })
     },
-    editRoles(row) {
+    isAdmin(row) {
+      if (row.key === 'admin' || row.key === 'user') return true
+      else return false
+    },
+    deleteRoles(index) {
+      this.$confirm('此操作将永久删除相关数据, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          this.rolesTab.splice(index, 1)
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
+    },
+    addRolesTab() {
+      this.diaIsShow = true
+      this.editType = 'add'
+      this.formData = {}
+      this.$nextTick(() => {
+        this.$refs.rolesForm.clearValidate()
+        this.$refs.tree.setCheckedKeys([])
+      })
+    },
+    editRoles(index, row) {
       this.diaIsShow = true
       this.strictly = true
+      this.editIndex = index
+      this.editType = 'update'
+      this.formData = Object.assign({}, this.formData, {
+        key: row.key,
+        description: row.description
+      })
       this.$nextTick(() => {
+        this.$refs.rolesForm.clearValidate()
         this.$refs.tree.setCheckedKeys(row.pages)
         this.strictly = false
+      })
+    },
+    changeRoles(form, type) {
+      this.$refs[form].validate(valid => {
+        if (valid) {
+          let treeKeys = this.$refs.tree.getCheckedKeys()
+          if (type === 'update') {
+            let index = this.editIndex
+            this.rolesTab[index].key = this.formData.key
+            this.rolesTab[index].description = this.formData.description
+            this.rolesTab[index].pages = treeKeys
+            this.$notify({
+              title: '成功',
+              message: '权限修改成功',
+              type: 'success'
+            })
+          } else if (type === 'add') {
+            let newTab = {}
+            newTab.key = this.formData.key
+            newTab.description = this.formData.description
+            newTab.pages = treeKeys
+            this.rolesTab.push(newTab)
+            this.$notify({
+              title: '成功',
+              message: '权限添加成功',
+              type: 'success'
+            })
+          }
+          this.diaIsShow = false
+        } else return
       })
     },
     getTreeData(route) {
@@ -162,6 +262,6 @@ export default {
 </style>
 <style lang="scss">
 .diaForm .el-form-item__label {
-  margin-right: 12px;
+  padding-right: 12px;
 }
 </style>
