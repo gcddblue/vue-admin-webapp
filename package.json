@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "animate.css": "^3.7.2",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "core-js": "^2.6.5",
     "driver.js": "^0.9.7",
     "echarts": "^4.2.1",
