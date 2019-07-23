@@ -25,12 +25,12 @@ module.exports = {
       error: true
     },
     proxy: {
-      '/apis': {
+      [process.env.VUE_APP_BASE_API]: {
         target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,
         secure: false,
         pathRewrite: {
-          '^/apis': ''
+          ['^' + process.env.VUE_APP_BASE_API]: ''
         }
       }
     }

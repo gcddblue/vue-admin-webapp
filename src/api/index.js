@@ -6,8 +6,8 @@ import Vue from 'vue'
 import { Loading, Message } from 'element-ui'
 
 const $axios = axios.create({
-  timeout: 30000
-  // baseURL: process.env.VUE_APP_BASE_API
+  timeout: 30000,
+  baseURL: process.env.VUE_APP_BASE_API
 })
 Vue.prototype.$http = axios // 并发请求
 let loading = null
