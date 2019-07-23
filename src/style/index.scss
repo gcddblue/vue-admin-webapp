@@ -71,7 +71,7 @@ body {
 .mtop30 {
   margin-top: $top30;
 }
-i[class^='el-icon'] {
+.header i[class^='el-icon'] {
   color: $text-color;
 }
 #app .clearFixed:after {
