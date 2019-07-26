@@ -134,6 +134,20 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/icons',
+    component: Layout,
+    name: 'Icons',
+    redirect: '/icons/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Icons-index',
+        component: () => import('@/views/icons'),
+        meta: { title: 'Icons图标', icon: 'el-icon-picture-outline' }
+      }
+    ]
+  },
+  {
     path: '/error',
     component: Layout,
     name: 'Error',
