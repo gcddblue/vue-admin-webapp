@@ -96,3 +96,19 @@ body {
 .marginLeft {
   margin-left: 64px !important;
 }
+.pTitle {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 0;
+  code {
+    background-color: #f9fafc;
+    padding: 0 4px;
+    border: 1px solid #eaeefb;
+    border-radius: 4px;
+  }
+  i {
+    margin-right: 5px;
+    color: #ffc107;
+    font-size: 18px;
+  }
+}

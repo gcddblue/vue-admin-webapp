@@ -26,6 +26,19 @@
           <span slot="label"
             ><i class="el-icon-s-promotion"></i> 阿里iconfonts</span
           >
+          <p class="pTitle">
+            这里是通过使用阿里iconfont在项目中生成字体图标，直接通过设置类名为
+            <code>el-icon-iconName iconfont</code> 来使用即可，例如：<code>{{
+              expText2
+            }}</code
+            >（如果需要添加更多图标就去iconfont官方添加图标，资源很多）
+          </p>
+          <ul class="iconUl clearFixed">
+            <li v-for="item in alIcons" :key="item">
+              <i :class="item + ' iconfont'"></i>
+              <span>{{ item }}</span>
+            </li>
+          </ul>
         </el-tab-pane>
       </el-tabs>
     </el-card>
@@ -34,11 +47,14 @@
 
 <script>
 import { elIcons } from './element-icons'
+import { alIcons } from './iconfont'
 export default {
   data() {
     return {
       elIcons,
-      expText1: '<i class="el-icon-platform-eleme"></i>'
+      alIcons,
+      expText1: '<i class="el-icon-platform-eleme"></i>',
+      expText2: '<i class="el-icon-weixin iconfont"></i>'
     }
   }
 }
@@ -51,17 +67,6 @@ export default {
     margin-right: 5px;
     color: #ffc107;
     font-size: 18px;
-  }
-}
-.pTitle {
-  font-size: 14px;
-  color: #666;
-  padding: 10px 0;
-  code {
-    background-color: #f9fafc;
-    padding: 0 4px;
-    border: 1px solid #eaeefb;
-    border-radius: 4px;
   }
 }
 .iconUl {

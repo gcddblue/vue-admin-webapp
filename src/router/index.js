@@ -7,6 +7,7 @@ Vue.use(Router)
 import Layout from '@/layout'
 import NavTest from './modules/nav-test'
 import { Message } from 'element-ui'
+import getTitle from '@/utils/getTitle'
 
 /*
   hidden: if set hidden is true, that mean not show in sideBars
@@ -148,6 +149,27 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/components',
+    component: Layout,
+    name: 'Components',
+    redirect: '/components/slide-yz',
+    meta: { icon: 'el-icon-coin', title: '部分组件' },
+    children: [
+      {
+        path: 'slide-yz',
+        name: 'Sldie-yz',
+        component: () => import('@/views/components/slide-yz'),
+        meta: { icon: 'el-icon-s-claim', title: '滑动验证' }
+      },
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import('@/views/components/pushImg'),
+        meta: { icon: 'el-icon-upload', title: '上传图片' }
+      }
+    ]
+  },
+  {
     path: '/error',
     component: Layout,
     name: 'Error',
@@ -160,6 +182,11 @@ export const asyncRoutes = [
         meta: { title: '404', icon: 'el-icon-s-release' }
       }
     ]
+  },
+  {
+    path: 'https://github.com/gcddblue/vue-admin-webapp',
+    name: 'Github',
+    meta: { icon: 'el-icon-link', title: '项目链接' }
   },
   NavTest,
   {
@@ -188,6 +215,7 @@ export function resetRouter() {
 
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
+  document.title = getTitle(to.meta.title)
   if (to.path === '/login') {
     next()
   } else {
