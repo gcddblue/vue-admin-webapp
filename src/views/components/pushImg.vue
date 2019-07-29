@@ -8,23 +8,14 @@
         <i class="el-icon-s-opportunity"></i>
         点击上传用户图像
       </p>
-      <el-upload
-        class="uploadPic"
-        action="https://httpbin.org/post"
-        :show-file-list="false"
-        :on-success="uploadSuc"
-        :before-upload="beforeFun"
-        accept="image/jpg,image/jpeg,image/png,image/PNG"
-      >
-        <img v-if="imgUrl" :src="imgUrl" class="imgUpload" />
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-      </el-upload>
+      <upload-com></upload-com>
     </el-card>
   </div>
 </template>
 
 <script>
 import { Loading } from 'element-ui'
+import UploadCom from '@/components/Upload'
 export default {
   data() {
     return {
@@ -48,31 +39,9 @@ export default {
         return true
       }
     }
+  },
+  components: {
+    UploadCom
   }
 }
 </script>
-<style lang="scss">
-.uploadPic .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.uploadPic .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-}
-.imgUpload {
-  width: 178px;
-  height: 178px;
-  display: block;
-}
-</style>
