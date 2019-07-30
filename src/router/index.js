@@ -193,6 +193,12 @@ export const asyncRoutes = [
         name: 'Excel-in',
         component: () => import('@/views/excel-operate/excel-in'),
         meta: { title: 'Excel导入' }
+      },
+      {
+        path: 'mutiheader-out',
+        name: 'Mutiheader-out',
+        component: () => import('@/views/excel-operate/mutiheader-out'),
+        meta: { title: '多级表头导出' }
       }
     ]
   },
