@@ -69,7 +69,16 @@ body {
   height: 100%;
 }
 .mtop30 {
-  margin-top: $top30;
+  margin-top: $px30;
+}
+.mtrt20 {
+  margin-right: $px20;
+}
+.wid300 {
+  width: 300px !important;
+}
+.btnStyle1 {
+  padding: 11px 20px !important;
 }
 .header i[class^='el-icon'] {
   color: $text-color;
