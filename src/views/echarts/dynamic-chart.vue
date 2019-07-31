@@ -1,10 +1,44 @@
 <template>
   <div class="slideCharts">
     <div class="chartBox">
-      <el-button @click="setChartData(10)">10天</el-button>
-      <el-button @click="setChartData(30)">30天</el-button>
-      <el-button @click="setChartData(60)">60天</el-button>
-      <el-button @click="setChartData(180)">180天</el-button>
+      <div class="btns">
+        <el-button
+          :class="{ active: shows === 1 }"
+          size="small"
+          @click="
+            setChartData(10)
+            shows = 1
+          "
+          >10天</el-button
+        >
+        <el-button
+          :class="{ active: shows === 2 }"
+          size="small"
+          @click="
+            setChartData(30)
+            shows = 2
+          "
+          >30天</el-button
+        >
+        <el-button
+          :class="{ active: shows === 3 }"
+          size="small"
+          @click="
+            setChartData(60)
+            shows = 3
+          "
+          >60天</el-button
+        >
+        <el-button
+          :class="{ active: shows === 4 }"
+          size="small"
+          @click="
+            setChartData(180)
+            shows = 4
+          "
+          >180天</el-button
+        >
+      </div>
       <div ref="myCharts" class="chartBox_d"></div>
     </div>
   </div>
@@ -19,6 +53,7 @@ export default {
   data() {
     return {
       mycharts: null,
+      shows: 1,
       date: [],
       price: [],
       chartData: {
@@ -136,10 +171,21 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
   height: 100%;
+  position: relative;
   .chartBox_d {
-    height: 80%;
+    height: 100%;
     box-sizing: border-box;
     padding: 30px 20px 30px 20px;
+  }
+  .btns {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    z-index: 99;
+    .el-button.active {
+      color: #3a8ee6;
+      background: #ddeeff;
+    }
   }
 }
 </style>
