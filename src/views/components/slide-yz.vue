@@ -9,14 +9,14 @@
         点击按钮调出滑动验证模块，相关配置如下：
       </p>
       <el-button type="primary" @click="showSlide = true">验证</el-button>
-      <p class="pTitle" style="margin-top: 50px;">参数说明：</p>
+      <p class="pTitle fontBold" style="margin-top: 50px;">参数说明：</p>
       <el-table :data="dataTab1" border stripe style="width: 100%">
         <el-table-column prop="params" label="参数"></el-table-column>
         <el-table-column prop="type" label="类型"></el-table-column>
         <el-table-column prop="default" label="默认值"></el-table-column>
         <el-table-column prop="info" label="说明"></el-table-column>
       </el-table>
-      <p class="pTitle" style="margin-top: 20px;">回调函数：</p>
+      <p class="pTitle fontBold" style="margin-top: 20px;">回调函数：</p>
       <el-table :data="dataTab2" border stripe style="width: 100%">
         <el-table-column prop="funcName" label="事件名"></el-table-column>
         <el-table-column prop="type" label="类型"></el-table-column>
