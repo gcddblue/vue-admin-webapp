@@ -193,6 +193,12 @@ export const asyncRoutes = [
         name: 'Dynamic-chart',
         component: () => import('@/views/echarts/dynamic-chart'),
         meta: { title: '切换charts' }
+      },
+      {
+        path: 'map-chart',
+        name: 'Map-chart',
+        component: () => import('@/views/echarts/map-chart'),
+        meta: { title: 'map' }
       }
     ]
   },
