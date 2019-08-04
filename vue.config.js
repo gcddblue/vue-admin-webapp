@@ -14,6 +14,7 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('views', resolve('src/views'))
+    config.optimization.runtimeChunk('single')
   },
   devServer: {
     host: 'localhost',
