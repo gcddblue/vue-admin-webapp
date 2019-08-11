@@ -7,6 +7,7 @@ Vue.use(Router)
 import Layout from '@/layout'
 import NavTest from './modules/nav-test'
 import { Message } from 'element-ui'
+import getTitle from '@/utils/getTitle'
 
 /*
   hidden: if set hidden is true, that mean not show in sideBars
@@ -134,6 +135,101 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/icons',
+    component: Layout,
+    name: 'Icons',
+    redirect: '/icons/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Icons-index',
+        component: () => import('@/views/icons'),
+        meta: { title: 'Icons图标', icon: 'el-icon-picture-outline' }
+      }
+    ]
+  },
+  {
+    path: '/components',
+    component: Layout,
+    name: 'Components',
+    redirect: '/components/slide-yz',
+    meta: { icon: 'el-icon-coin', title: '部分组件' },
+    children: [
+      {
+        path: 'slide-yz',
+        name: 'Sldie-yz',
+        component: () => import('@/views/components/slide-yz'),
+        meta: { icon: 'el-icon-s-claim', title: '滑动验证' }
+      },
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import('@/views/components/pushImg'),
+        meta: { icon: 'el-icon-upload', title: '上传图片' }
+      },
+      {
+        path: 'carousel',
+        name: 'Carousel',
+        component: () => import('@/views/components/carousel'),
+        meta: { icon: 'el-icon-lunbo iconfont', title: '轮播' }
+      }
+    ]
+  },
+  {
+    path: '/echarts',
+    component: Layout,
+    name: 'Echarts',
+    redirect: '/echarts/slide-chart',
+    meta: { icon: 'el-icon-s-marketing', title: 'Echarts' },
+    children: [
+      {
+        path: 'slide-chart',
+        name: 'Sldie-chart',
+        component: () => import('@/views/echarts/slide-chart'),
+        meta: { title: '滑动charts' }
+      },
+      {
+        path: 'dynamic-chart',
+        name: 'Dynamic-chart',
+        component: () => import('@/views/echarts/dynamic-chart'),
+        meta: { title: '切换charts' }
+      },
+      {
+        path: 'map-chart',
+        name: 'Map-chart',
+        component: () => import('@/views/echarts/map-chart'),
+        meta: { title: 'map' }
+      }
+    ]
+  },
+  {
+    path: '/excel',
+    component: Layout,
+    name: 'Excel',
+    redirect: '/excel-operate/excel-out',
+    meta: { icon: 'el-icon-excel iconfont', title: 'Excel' },
+    children: [
+      {
+        path: 'excel-out',
+        name: 'Excel-out',
+        component: () => import('@/views/excel-operate/excel-out'),
+        meta: { title: 'Excel导出' }
+      },
+      {
+        path: 'excel-in',
+        name: 'Excel-in',
+        component: () => import('@/views/excel-operate/excel-in'),
+        meta: { title: 'Excel导入' }
+      },
+      {
+        path: 'mutiheader-out',
+        name: 'Mutiheader-out',
+        component: () => import('@/views/excel-operate/mutiheader-out'),
+        meta: { title: '多级表头导出' }
+      }
+    ]
+  },
+  {
     path: '/error',
     component: Layout,
     name: 'Error',
@@ -146,6 +242,11 @@ export const asyncRoutes = [
         meta: { title: '404', icon: 'el-icon-s-release' }
       }
     ]
+  },
+  {
+    path: 'https://github.com/gcddblue/vue-admin-webapp',
+    name: 'Github',
+    meta: { icon: 'el-icon-link', title: '项目链接' }
   },
   NavTest,
   {
@@ -174,6 +275,7 @@ export function resetRouter() {
 
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
+  document.title = getTitle(to.meta.title)
   if (to.path === '/login') {
     next()
   } else {

@@ -34,7 +34,10 @@ import {
   Notification,
   Dialog,
   DatePicker,
-  Tree
+  Tree,
+  Upload,
+  Carousel,
+  CarouselItem
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -81,3 +84,6 @@ Vue.use(DatePicker)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Tree)
+Vue.use(Upload)
+Vue.use(Carousel)
+Vue.use(CarouselItem)

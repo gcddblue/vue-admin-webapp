@@ -57,7 +57,7 @@
             :props="defaultProps"
             show-checkbox
             default-expand-all
-            :check-strictly="strictly"
+            :check-strictly="true"
           ></el-tree>
         </el-form-item>
         <el-form-item>
@@ -103,8 +103,7 @@ export default {
       defaultProps: {
         label: 'label',
         children: 'children'
-      },
-      strictly: false
+      }
     }
   },
   created() {
@@ -156,7 +155,6 @@ export default {
     },
     editRoles(index, row) {
       this.diaIsShow = true
-      this.strictly = true
       this.editIndex = index
       this.editType = 'update'
       this.formData = Object.assign({}, this.formData, {
@@ -166,7 +164,6 @@ export default {
       this.$nextTick(() => {
         this.$refs.rolesForm.clearValidate()
         this.$refs.tree.setCheckedKeys(row.pages)
-        this.strictly = false
       })
     },
     changeRoles(form, type) {

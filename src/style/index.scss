@@ -69,7 +69,19 @@ body {
   height: 100%;
 }
 .mtop30 {
-  margin-top: $top30;
+  margin-top: $px30;
+}
+.fontBold {
+  font-weight: bold;
+}
+.mtrt20 {
+  margin-right: $px20;
+}
+.wid300 {
+  width: 300px !important;
+}
+.btnStyle1 {
+  padding: 11px 20px !important;
 }
 .header i[class^='el-icon'] {
   color: $text-color;
@@ -95,4 +107,23 @@ body {
 }
 .marginLeft {
   margin-left: 64px !important;
+}
+.pTitle {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 0;
+  code {
+    background-color: #f9fafc;
+    padding: 0 4px;
+    border: 1px solid #eaeefb;
+    border-radius: 4px;
+  }
+  span {
+    font-size: 12px;
+  }
+  i {
+    margin-right: 5px;
+    color: #ffc107;
+    font-size: 18px;
+  }
 }
