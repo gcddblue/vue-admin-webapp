@@ -23,6 +23,7 @@ export const currencyRoutes = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login'),
+    meta: { title: '登录页' },
     hidden: true
   },
   {

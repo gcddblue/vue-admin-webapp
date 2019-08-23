@@ -1,42 +1,51 @@
 <template>
   <div class="login">
-    <div class="slideSty" v-show="showSlide">
-      <slide-verify
-        @success="onSuccess"
-        @fail="onFail"
-        :sliderText="text"
-        :w="350"
-        :h="175"
-        ref="slideDiv"
-      ></slide-verify>
-      <div class="iconBtn">
-        <i class="el-icon-circle-close" @click="showSlide = false"></i
-        ><i class="el-icon-refresh" @click="refresh"></i>
-      </div>
+    <div class="slideShadow" v-show="showSlide">
+      <transition>
+        <div class="slideSty animated bounce">
+          <slide-verify
+            @success="onSuccess"
+            @fail="onFail"
+            :sliderText="text"
+            :w="350"
+            :h="175"
+            ref="slideDiv"
+          ></slide-verify>
+          <div class="iconBtn">
+            <i class="el-icon-circle-close" @click="showSlide = false"></i
+            ><i class="el-icon-refresh" @click="refresh"></i>
+          </div>
+        </div>
+      </transition>
     </div>
-    <el-form ref="loginForm" class="loginCon" :rules="rules" :model="ruleForm">
+    <h2 class="loginH2"><strong>Vue</strong> 后台管理系统</h2>
+    <div class="loginCon">
       <div class="titleDiv">
-        <h2>系统登录</h2>
+        <h3>Sign up now</h3>
+        <p>Enter your username and password to log on:</p>
+        <i class="el-icon-key"></i>
       </div>
-      <el-form-item prop="user">
-        <el-input
-          placeholder="请输入账号"
-          prefix-icon="el-icon-user"
-          v-model="ruleForm.user"
-        ></el-input>
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input
-          placeholder="请输入密码"
-          prefix-icon="el-icon-lock"
-          v-model="ruleForm.password"
-          show-password
-        ></el-input>
-      </el-form-item>
-      <el-button type="primary" class="loginBtn" @click="loginYz('loginForm')"
-        >登录</el-button
-      >
-    </el-form>
+      <el-form ref="loginForm" :rules="rules" :model="ruleForm">
+        <el-form-item prop="user">
+          <el-input
+            placeholder="请输入账号"
+            prefix-icon="el-icon-user"
+            v-model="ruleForm.user"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            placeholder="请输入密码"
+            prefix-icon="el-icon-lock"
+            v-model="ruleForm.password"
+            show-password
+          ></el-input>
+        </el-form-item>
+        <el-button type="primary" class="loginBtn" @click="loginYz('loginForm')"
+          >登录</el-button
+        >
+      </el-form>
+    </div>
   </div>
 </template>
 
@@ -105,23 +114,63 @@ export default {
 .login {
   height: 100%;
   width: 100%;
-  background-color: #2d3a4b;
+  // background-color: #2d3a4b;
+  background: url(../../assets/pageBg/loginBg.jpg) no-repeat center center;
+  background-size: 100% 100%;
 }
-.titleDiv {
-  margin-bottom: 30px;
-  h2 {
-    font-size: 26px;
-    color: #eee;
-    text-align: center;
-  }
+.loginH2 {
+  font-size: 38px;
+  color: #fff;
+  text-align: center;
+  padding-top: 160px;
 }
 .loginCon {
-  width: 450px;
+  width: 550px;
   margin: 0 auto;
-  padding-top: 160px;
+  margin-top: 30px;
+  background: #eee;
+  border-radius: 4px;
+  .titleDiv {
+    padding: 0 28px;
+    background: #fff;
+    position: relative;
+    height: 120px;
+    border-radius: 4px 4px 0 0;
+    h3 {
+      font-size: 22px;
+      color: #555;
+      font-weight: initial;
+      padding-top: 23px;
+    }
+    p {
+      font-size: 16px;
+      color: #888;
+      padding-top: 12px;
+    }
+    i {
+      font-size: 65px;
+      color: #ddd;
+      position: absolute;
+      right: 27px;
+      top: 29px;
+    }
+  }
+  .el-form {
+    padding: 25px 25px 30px 25px;
+    background: #eee;
+    border-radius: 0 0 4px 4px;
+  }
 }
 .loginBtn {
   width: 100%;
+  background: #19b9e7;
+}
+.slideShadow {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
 .slideSty {
   position: absolute;
@@ -131,7 +180,7 @@ export default {
   border: 1px solid #dcdcdc;
   left: 50%;
   margin-left: -188px;
-  margin-top: 164px;
+  margin-top: 247px;
   z-index: 99;
   border-radius: 5px;
 }

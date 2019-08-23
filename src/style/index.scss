@@ -95,14 +95,16 @@ body {
   visibility: hidden;
 }
 .loginCon .el-input__inner {
-  background: rgba(0, 0, 0, 0.1);
+  // background: rgba(0, 0, 0, 0.1);
+  background: #fff;
   height: 50px;
   outline: none;
-  color: $white;
+  color: $text-color;
   border: none;
 }
 .loginCon .el-form-item {
-  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  // border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border: 1px solid #ddd;
   border-radius: 5px;
 }
 .marginLeft {
