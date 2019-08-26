@@ -18,33 +18,38 @@
         </div>
       </transition>
     </div>
-    <h2 class="loginH2"><strong>Vue</strong> 后台管理系统</h2>
-    <div class="loginCon">
-      <div class="titleDiv">
-        <h3>Sign up now</h3>
-        <p>Enter your username and password to log on:</p>
-        <i class="el-icon-key"></i>
+    <div class="loginBox">
+      <h2 class="loginH2"><strong>Vue</strong> 后台管理系统</h2>
+      <div class="loginCon">
+        <div class="titleDiv">
+          <h3>Sign up now</h3>
+          <p>Enter your username and password to log on:</p>
+          <i class="el-icon-key"></i>
+        </div>
+        <el-form ref="loginForm" :rules="rules" :model="ruleForm">
+          <el-form-item prop="user">
+            <el-input
+              placeholder="请输入账号"
+              prefix-icon="el-icon-user"
+              v-model="ruleForm.user"
+            ></el-input>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input
+              placeholder="请输入密码"
+              prefix-icon="el-icon-lock"
+              v-model="ruleForm.password"
+              show-password
+            ></el-input>
+          </el-form-item>
+          <el-button
+            type="primary"
+            class="loginBtn"
+            @click="loginYz('loginForm')"
+            >登录</el-button
+          >
+        </el-form>
       </div>
-      <el-form ref="loginForm" :rules="rules" :model="ruleForm">
-        <el-form-item prop="user">
-          <el-input
-            placeholder="请输入账号"
-            prefix-icon="el-icon-user"
-            v-model="ruleForm.user"
-          ></el-input>
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-            placeholder="请输入密码"
-            prefix-icon="el-icon-lock"
-            v-model="ruleForm.password"
-            show-password
-          ></el-input>
-        </el-form-item>
-        <el-button type="primary" class="loginBtn" @click="loginYz('loginForm')"
-          >登录</el-button
-        >
-      </el-form>
     </div>
   </div>
 </template>
@@ -114,19 +119,24 @@ export default {
 .login {
   height: 100%;
   width: 100%;
-  // background-color: #2d3a4b;
   background: url(../../assets/pageBg/loginBg.jpg) no-repeat center center;
   background-size: 100% 100%;
+  overflow: hidden;
+}
+.loginBox {
+  height: 455px;
+  width: 550px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  margin-top: -287px;
 }
 .loginH2 {
   font-size: 38px;
   color: #fff;
   text-align: center;
-  padding-top: 160px;
 }
 .loginCon {
-  width: 550px;
-  margin: 0 auto;
   margin-top: 30px;
   background: #eee;
   border-radius: 4px;
@@ -179,8 +189,9 @@ export default {
   background: #e8e8e8;
   border: 1px solid #dcdcdc;
   left: 50%;
+  top: 50%;
   margin-left: -188px;
-  margin-top: 247px;
+  margin-top: -176px;
   z-index: 99;
   border-radius: 5px;
 }
