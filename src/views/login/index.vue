@@ -59,11 +59,12 @@ import SlideVerify from '@/components/SlideVerify'
 export default {
   data() {
     return {
+      notifyObj: null,
       text: '向右滑动',
       showSlide: false,
       ruleForm: {
-        user: '',
-        password: ''
+        user: 'admin',
+        password: '123456'
       },
       rules: {
         user: [
@@ -73,6 +74,9 @@ export default {
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       }
     }
+  },
+  mounted() {
+    this.shopTip()
   },
   methods: {
     onSuccess() {
@@ -102,12 +106,25 @@ export default {
             this.refresh()
           } else {
             this.$router.push(this.$route.query.redirect)
+            if (this.notifyObj) {
+              this.notifyObj.close()
+            }
+            this.notifyObj = null
           }
         })
         .catch(error => {
           this.refresh()
           this.$message.error(error)
         })
+    },
+    shopTip() {
+      this.notifyObj = this.$notify({
+        title: '提示',
+        message:
+          '目前有两个登陆角色，管理员和普通用户，账号分别为：admin、user,密码都为：123456',
+        duration: 0,
+        iconClass: 'el-icon-s-opportunity'
+      })
     }
   },
   components: {
