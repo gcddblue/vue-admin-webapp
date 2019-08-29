@@ -3,13 +3,16 @@ import Qs from 'qs'
 import store from '@/store'
 import router from '@/router'
 import Vue from 'vue'
-import { Loading, Message } from 'element-ui'
+import { Loading, Message } from 'element-ui' // 引用element-ui的加载和消息提示组件
 
 const $axios = axios.create({
+  // 设置超时时间
   timeout: 30000,
+  // 基础url，会在请求url中自动添加前置链接
   baseURL: process.env.VUE_APP_BASE_API
 })
 Vue.prototype.$http = axios // 并发请求
+// 在全局请求和响应拦截器中添加请求状态
 let loading = null
 
 // 请求拦截器
