@@ -56,8 +56,7 @@
             node-key="name"
             :props="defaultProps"
             show-checkbox
-            default-expand-all
-            :check-strictly="true"
+            :check-strictly="false"
           ></el-tree>
         </el-form-item>
         <el-form-item>
