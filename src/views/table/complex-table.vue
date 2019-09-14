@@ -42,17 +42,21 @@
         >
       </div>
       <el-table :data="tableData" border stripe>
-        <el-table-column prop="id" label="序号" width="80"></el-table-column>
+        <el-table-column prop="id" label="序号" width="60"></el-table-column>
         <el-table-column prop="order" label="订单号"></el-table-column>
         <el-table-column prop="time" label="下单时间"></el-table-column>
         <el-table-column
           prop="address"
           label="配送地址"
-          width="280"
+          width="210"
         ></el-table-column>
         <el-table-column prop="phone" label="联系电话"></el-table-column>
-        <el-table-column prop="name" label="配送员"></el-table-column>
-        <el-table-column prop="status" label="状态">
+        <el-table-column
+          prop="name"
+          label="配送员"
+          width="70"
+        ></el-table-column>
+        <el-table-column prop="status" label="状态" width="90">
           <template slot-scope="scope">
             <el-tag :type="scope.row.status | tagClass">{{
               scope.row.status | statusText
