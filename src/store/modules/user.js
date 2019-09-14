@@ -57,7 +57,7 @@ const actions = {
     router.push({
       path: '/login',
       query: {
-        redirect: router.currentRoute.fullPath
+        redirect: '/'
       }
     })
   },
