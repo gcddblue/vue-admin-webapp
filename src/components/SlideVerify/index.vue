@@ -144,11 +144,11 @@ export default {
       ctx.arc(x + r - 2, y + l / 2, r + 0.4, 2.76 * PI, 1.24 * PI, true)
       ctx.lineTo(x, y)
       ctx.lineWidth = 2
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)'
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'
       ctx.stroke()
       ctx[operation]()
-      ctx.globalCompositeOperation = 'overlay'
+      ctx.globalCompositeOperation = 'xor'
     },
     createImg(onload) {
       const img = document.createElement('img')
